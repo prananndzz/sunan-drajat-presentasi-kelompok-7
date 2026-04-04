@@ -1,1 +1,980 @@
-# sunan-drajat-presentasi-kelompok-7
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sunan Drajat — Presentasi</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --g1: #04342C;
+  --g2: #085041;
+  --g3: #0F6E56;
+  --g4: #1D9E75;
+  --g5: #5DCAA5;
+  --g6: #9FE1CB;
+  --g7: #E1F5EE;
+  --gold: #C17F24;
+  --gold2: #E8A93A;
+  --gold3: #FAD67A;
+  --cream: #FDFAF3;
+  --cream2: #F5EDD5;
+  --ink: #0F1A16;
+  --ink2: #2C3D35;
+  --ink3: #5A7066;
+  --ink4: #8FA99E;
+  --white: #ffffff;
+  --card-shadow: 0 20px 60px rgba(4,52,44,0.15), 0 4px 16px rgba(4,52,44,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--g1);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ═══ ANIMATED BG ═══ */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 50% at 10% 20%, rgba(29,158,117,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 60% at 90% 80%, rgba(193,127,36,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(8,80,65,0.6) 0%, transparent 80%),
+    var(--g1);
+}
+
+/* islamic geometric pattern overlay */
+.bg-pattern {
+  position: fixed; inset: 0; z-index: 0; opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='0.5'%3E%3Cpolygon points='30,2 58,17 58,43 30,58 2,43 2,17'/%3E%3Cpolygon points='30,12 48,22 48,42 30,52 12,42 12,22'/%3E%3Cline x1='30' y1='2' x2='30' y2='12'/%3E%3Cline x1='58' y1='17' x2='48' y2='22'/%3E%3Cline x1='58' y1='43' x2='48' y2='42'/%3E%3Cline x1='30' y1='58' x2='30' y2='52'/%3E%3Cline x1='2' y1='43' x2='12' y2='42'/%3E%3Cline x1='2' y1='17' x2='12' y2='22'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ═══ HEADER ═══ */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(4,52,44,0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.hdr-brand {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  color: var(--gold3);
+  letter-spacing: 1px;
+  display: flex; align-items: center; gap: 10px;
+}
+.hdr-gem {
+  width: 8px; height: 8px;
+  background: var(--gold2);
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
+.hdr-right {
+  display: flex; align-items: center; gap: 14px;
+}
+.hdr-counter {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.5px;
+}
+
+/* ═══ STAGE ═══ */
+.stage {
+  position: relative; z-index: 10;
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 88px 1.5rem 2rem;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+}
+
+/* ═══ SLIDES ═══ */
+.slide {
+  display: none;
+  flex: 1;
+  animation: slideIn 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.slide.active { display: flex; flex-direction: column; gap: 0; }
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.99); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ═══ CARD SHELL ═══ */
+.card {
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+
+/* top stripe */
+.card-stripe {
+  height: 4px;
+  background: linear-gradient(90deg, var(--g4) 0%, var(--gold2) 50%, var(--g5) 100%);
+}
+
+.card-body {
+  padding: 2.5rem 3rem;
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+@media (max-width:620px) { .card-body { padding: 1.75rem 1.5rem; } }
+
+/* ═══ EYEBROW + TITLE ═══ */
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--g4);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+h2.stitle {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.5rem,3.5vw,2.1rem);
+  color: var(--g1);
+  line-height: 1.25;
+  margin-bottom: 0.3rem;
+}
+.rule {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0.75rem 0 1.5rem;
+}
+.rule-line { flex: 1; max-width: 36px; height: 2px; background: var(--gold2); border-radius: 2px; }
+.rule-gem  { width: 6px; height: 6px; background: var(--gold2); transform: rotate(45deg); border-radius: 1px; }
+
+/* ═══ COVER SLIDE ═══ */
+.cover-card {
+  background: var(--g1);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  min-height: 500px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 4rem 3rem;
+}
+.cover-bg-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 60%, rgba(29,158,117,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 50% 90%, rgba(193,127,36,0.15) 0%, transparent 60%);
+}
+.cover-arch-wrap {
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 0;
+}
+.cover-arch {
+  width: 80px; height: 50px;
+  border-radius: 0 0 40px 40px;
+  background: rgba(29,158,117,0.12);
+  border: 1px solid rgba(29,158,117,0.2);
+}
+.cover-arch.sm {
+  width: 50px; height: 34px;
+  border-radius: 0 0 25px 25px;
+  background: rgba(193,127,36,0.08);
+  border-color: rgba(193,127,36,0.15);
+}
+.cover-star {
+  font-family: 'Amiri', serif;
+  font-size: 1.8rem;
+  color: var(--gold2);
+  letter-spacing: 14px;
+  opacity: 0.7;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.cover h1 {
+  font-family: 'Amiri', serif;
+  font-size: clamp(2.8rem,7vw,4.5rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+.cover-line {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold2), transparent);
+  margin: 1rem auto;
+}
+.cover-sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 420px; line-height: 1.8;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.cover-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(29,158,117,0.15);
+  border: 1px solid rgba(29,158,117,0.3);
+  color: var(--g6);
+  font-size: 0.75rem; font-weight: 500;
+  padding: 7px 18px; border-radius: 40px;
+  position: relative;
+  letter-spacing: 0.5px;
+}
+.cover-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--g5); }
+
+/* ═══ MEMBER GRID ═══ */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+  gap: 14px; margin-top: 0.25rem;
+}
+.member-card {
+  background: var(--cream);
+  border: 1px solid rgba(29,158,117,0.12);
+  border-radius: 16px;
+  padding: 1.4rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+.member-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--g4), var(--gold2));
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s;
+}
+.member-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(29,158,117,0.15); }
+.member-card:hover::after { transform: scaleX(1); }
+.member-avatar {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--g7), var(--g6));
+  border: 2px solid var(--g5);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 0.9rem; color: var(--g2);
+  margin: 0 auto 10px;
+  box-shadow: 0 4px 12px rgba(29,158,117,0.2);
+}
+.member-name { font-size: 0.85rem; font-weight: 500; color: var(--ink2); }
+.member-hint { font-size: 0.68rem; color: var(--ink4); margin-top: 3px; }
+
+/* ═══ BADGE ROW ═══ */
+.badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.25rem; }
+.badge {
+  background: var(--g7);
+  color: var(--g2);
+  font-size: 0.72rem; font-weight: 600;
+  padding: 5px 13px; border-radius: 20px;
+  border: 1px solid rgba(29,158,117,0.2);
+}
+
+/* ═══ BULLET POINTS ═══ */
+.points { display: flex; flex-direction: column; gap: 1rem; }
+.point { display: flex; gap: 14px; align-items: flex-start; }
+.point-icon {
+  flex-shrink: 0;
+  width: 28px; height: 28px; border-radius: 8px;
+  background: var(--g7);
+  border: 1px solid rgba(29,158,117,0.2);
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.point-icon svg { width: 13px; height: 13px; }
+.point-text { font-size: 0.9rem; color: var(--ink2); line-height: 1.75; }
+.hl { font-weight: 600; color: var(--g2); }
+
+/* ═══ STORY SLIDES ═══ */
+.story-card {
+  background: var(--white);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  flex: 1;
+  display: flex; flex-direction: column;
+}
+.story-header {
+  background: linear-gradient(135deg, var(--g2) 0%, var(--g3) 100%);
+  padding: 2rem 3rem 1.5rem;
+  position: relative; overflow: hidden;
+}
+.story-header::after {
+  content: '';
+  position: absolute; right: -30px; bottom: -30px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  border: 20px solid rgba(255,255,255,0.05);
+}
+.story-header::before {
+  content: '';
+  position: absolute; right: 40px; bottom: -50px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  border: 30px solid rgba(255,255,255,0.03);
+}
+.story-num {
+  font-size: 0.68rem; letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 0.4rem;
+}
+.story-title {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.4rem,3vw,2rem);
+  color: var(--white);
+  line-height: 1.25;
+}
+.story-subtitle {
+  font-size: 0.82rem; color: rgba(255,255,255,0.55);
+  margin-top: 4px; font-style: italic;
+}
+.story-body {
+  padding: 2rem 3rem;
+  flex: 1;
+}
+@media(max-width:620px){ .story-header,.story-body { padding-left:1.5rem; padding-right:1.5rem; } }
+
+.story-text {
+  font-size: 0.92rem;
+  color: var(--ink2);
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+}
+.story-highlight {
+  background: linear-gradient(135deg, var(--g7) 0%, #f0faf5 100%);
+  border-left: 3px solid var(--g4);
+  border-radius: 0 12px 12px 0;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.8;
+  font-style: italic;
+}
+.story-highlight strong { font-style: normal; color: var(--g2); font-weight: 600; }
+
+/* ═══ GELAR CARDS ═══ */
+.gelar-grid { display: flex; flex-direction: column; gap: 1rem; }
+.gelar-card {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(29,158,117,0.12);
+  display: flex;
+}
+.gelar-accent {
+  width: 5px;
+  background: linear-gradient(180deg, var(--g4), var(--gold2));
+  flex-shrink: 0;
+}
+.gelar-content { padding: 1.1rem 1.4rem; flex: 1; }
+.gelar-name {
+  font-family: 'Amiri', serif;
+  font-size: 1.15rem;
+  color: var(--g2); margin-bottom: 5px;
+}
+.gelar-desc { font-size: 0.86rem; color: var(--ink3); line-height: 1.8; }
+
+/* ═══ TIMELINE ═══ */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--g4), var(--gold2), var(--g4));
+  border-radius: 2px;
+}
+.tl-item { position: relative; margin-bottom: 1.25rem; }
+.tl-dot {
+  position: absolute; left: -2rem; top: 2px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--g4);
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px var(--g5);
+}
+.tl-year {
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--g4); letter-spacing: 0.5px;
+  margin-bottom: 3px; text-transform: uppercase;
+}
+.tl-text { font-size: 0.88rem; color: var(--ink2); line-height: 1.7; }
+
+/* ═══ TWO-COL ═══ */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem 1.5rem; }
+@media(max-width:560px){ .two-col { grid-template-columns: 1fr; } }
+
+/* ═══ TELADAN CARDS ═══ */
+.teladan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media(max-width:560px){ .teladan-grid { grid-template-columns: 1fr; } }
+.teladan-card {
+  background: var(--cream);
+  border: 1px solid rgba(29,158,117,0.1);
+  border-radius: 16px;
+  padding: 1.1rem 1.15rem;
+  display: flex; flex-direction: column; gap: 8px;
+  transition: all 0.25s;
+  position: relative; overflow: hidden;
+}
+.teladan-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--g4), var(--gold2));
+  border-radius: 2px 2px 0 0;
+}
+.teladan-card:hover { box-shadow: 0 8px 24px rgba(29,158,117,0.12); transform: translateY(-2px); }
+.teladan-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--g7);
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(29,158,117,0.15);
+}
+.teladan-icon svg { width: 18px; height: 18px; }
+.teladan-title { font-size: 0.88rem; font-weight: 600; color: var(--g2); }
+.teladan-desc { font-size: 0.8rem; color: var(--ink3); line-height: 1.65; }
+
+/* ═══ NAVIGATION ═══ */
+.nav-area {
+  margin-top: 1.25rem;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.nav-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-btn {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 10px 24px;
+  font-size: 0.82rem;
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  color: rgba(255,255,255,0.8);
+  font-weight: 500;
+  transition: all 0.2s;
+  backdrop-filter: blur(8px);
+}
+.nav-btn:hover:not(:disabled) {
+  background: rgba(29,158,117,0.25);
+  border-color: rgba(29,158,117,0.4);
+  color: var(--white);
+}
+.nav-btn:active:not(:disabled) { transform: scale(0.97); }
+.nav-btn:disabled { opacity: 0.25; cursor: default; }
+
+.nav-dots { display: flex; gap: 6px; align-items: center; }
+.ndot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.25s;
+}
+.ndot.active { background: var(--g4); width: 24px; border-radius: 4px; }
+.ndot:hover:not(.active) { background: rgba(255,255,255,0.4); }
+
+/* progress */
+.progress-track {
+  height: 2px; background: rgba(255,255,255,0.08);
+  border-radius: 2px; overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--g4), var(--gold2));
+  border-radius: 2px;
+  transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+/* ═══ UTIL ═══ */
+p.body-text { font-size: 0.9rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1rem; }
+</style>
+</head>
+<body>
+
+<div class="bg-canvas"></div>
+<div class="bg-pattern"></div>
+
+<header>
+  <div class="hdr-brand">
+    <div class="hdr-gem"></div>
+    Sunan Drajat
+  </div>
+  <div class="hdr-right">
+    <span class="hdr-counter" id="slideCounter">1 / 15</span>
+  </div>
+</header>
+
+<div class="stage">
+
+  <!-- ══ SLIDE 1 — COVER ══ -->
+  <div class="slide active" id="s1">
+    <div class="cover-card">
+      <div class="cover-bg-glow"></div>
+      <div class="cover-arch-wrap">
+        <div class="cover-arch sm"></div>
+        <div class="cover-arch"></div>
+        <div class="cover-arch sm"></div>
+      </div>
+      <div class="cover-star">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <div class="eyebrow" style="color:rgba(255,255,255,0.4); position:relative;">Presentasi Sejarah Islam</div>
+      <h1 class="cover" style="position:relative;">Sunan Drajat</h1>
+      <div class="cover-line"></div>
+      <p class="cover-sub">Wali Songo berjiwa sosial dari pesisir utara Jawa yang mengangkat derajat masyarakat melalui dakwah, kepedulian, dan keteladanan nyata.</p>
+      <div class="cover-pill">
+        <div class="cover-pill-dot"></div>
+        Wali Songo · Lamongan, Jawa Timur
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 2 — ANGGOTA ══ -->
+  <div class="slide" id="s2">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 02</p>
+        <h2 class="stitle">Anggota Kelompok</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <div class="member-grid" id="memberGrid"></div>
+        <p style="margin-top:1.1rem;font-size:0.73rem;color:var(--ink4);text-align:center;">✦ Klik kartu untuk mengedit nama anggota ✦</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 3 — BIOGRAFI ══ -->
+  <div class="slide" id="s3">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 03</p>
+        <h2 class="stitle">Biografi Sunan Drajat</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <div style="display:flex; flex-direction:column; gap:0;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px 2rem;">
+            <div class="bio-row">
+              <div class="bio-label">1. Nama Asli : </div>
+              <div class="bio-value"><h4>Raden Qasim</h4> <span style="color:var(--ink4); font-size:0.8rem;">(Raden Syarifuddin)</span></div>
+            </div>
+            <div class="bio-row">
+              <div class="bio-label">2. Gelar : </div>
+              <div class="bio-value"><h4>Sunan Drajat<h4></div>
+            </div>
+            <div class="bio-row" style="grid-column:1/-1;">
+              <div class="bio-label">3. Nama Lain : </div>
+              <div class="bio-value"><h4>Sunan Mayang Madu, Pangeran Kadrajat, Sunan Mahmud, Maulana Hasyim, Raden Imam, Pangeran Syarifuddin</h4></div>
+            </div>
+            <div class="bio-row">
+              <div class="bio-label">4. Nama Ayah : </div>
+              <div class="bio-value"><h4>Sunan Ampel</h4> <span style="color:var(--ink4); font-size:0.8rem;">(Raden Rahmat)</span></div>
+            </div>
+            <div class="bio-row">
+              <div class="bio-label">5. Nama Ibu : </div>
+              <div class="bio-value"><h4>Dewi Chandrawati </h4><span style="color:var(--ink4); font-size:0.8rem;">(Nyai Ageng Manila)</span></div>
+            </div>
+            <div class="bio-row">
+              <div class="bio-label">6. Tempat / Tanggal Lahir : </div>
+              <div class="bio-value"><h4>Ampeldenta, Surabaya / 1470 M</h4></div>
+            </div>
+            <div class="bio-row">
+              <div class="bio-label">7. Daerah Asal : </div>
+              <div class="bio-value"><h4>Ampeldenta, Surabaya<h4> <span style="color:var(--ink4); font-size:0.8rem;">(bukan Tuban — Tuban adalah asal ibu beliau)</span></div>
+            </div>
+            <div class="bio-row" style="grid-column:1/-1;">
+              <div class="bio-label">8. Daerah Penyebaran Islam : </div>
+              <div class="bio-value"><h4>1. Lamongan (khususnya Desa Drajat, Kec. Paciran) &nbsp;·&nbsp; 2. Pesisir Utara Jawa Timur</h4></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 4 — KISAH BAGIAN 1 ══ -->
+  <div class="slide" id="s4">
+    <div class="story-card">
+      <div class="story-header">
+        <div class="story-num">Kisah · Bagian 1 dari 3</div>
+        <div class="story-title">Kelahiran, Keluarga &amp; Masa Belajar</div>
+        <div class="story-subtitle">Dari Ampeldenta hingga Cirebon</div>
+      </div>
+      <div class="story-body">
+        <p class="story-text">Sunan Drajat lahir di Ampeldenta, Surabaya, pada tahun 1470 M dengan nama Raden Qasim, sebagai putra termuda Sunan Ampel dengan Nyi Ageng Manila. Ibunya sendiri adalah putri Arya Teja IV, seorang adipati Tuban. Semasa muda ia dikenal dengan berbagai nama seperti Sunan Mahmud, Sunan Mayang Madu, Raden Imam, Maulana Hasyim, dan Pangeran Syarifuddin.</p>
+        <div class="story-highlight">
+          <strong>Tumbuh dalam Budaya Jawa</strong><br/>
+          Sejak kecil, Sunan Drajat dididik dalam lingkungan keluarga ibunya yang berasal dari Jawa, sehingga ia menguasai ilmu, bahasa, seni, budaya, sastra, dan agama bercorak Jawa. Hal inilah yang kelak membuat pendekatan dakwahnya begitu dekat dengan masyarakat.
+        </div>
+        <p class="story-text">Ia mengenyam pendidikan di pesantren milik ayahnya, Pondok Pesantren Ampel Denta, lalu melanjutkan berguru kepada Sunan Gunung Jati di Cirebon. Di Cirebon itulah ia menikahi putri Sunan Gunung Jati bernama <em>Dewi Sufiyah</em>. Setelah kembali ke Ampeldenta, Sunan Ampel memerintahkannya untuk berdakwah ke pesisir barat Gresik.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 5 — KISAH BAGIAN 2 ══ -->
+  <div class="slide" id="s5">
+    <div class="story-card">
+      <div class="story-header">
+        <div class="story-num">Kisah · Bagian 2 dari 3</div>
+        <div class="story-title">Terdampar &amp; Mendirikan Pesantren</div>
+        <div class="story-subtitle">Dari Kampung Jelak menuju Desa Drajat</div>
+      </div>
+      <div class="story-body">
+        <p class="story-text">Dalam perjalanan menuju Gresik, perahu yang ditumpangi Raden Qasim kandas dihantam ombak besar dan tenggelam. Ia kemudian diselamatkan oleh dua ekor ikan besar, yakni ikan cucut dan ikan talang. Dengan menunggang kedua ikan itu, Raden Qasim berhasil mendarat di sebuah tempat yang kemudian dikenal sebagai Kampung Jelak, Banjarwati, sekitar tahun 1485 M.</p>
+        <div class="story-highlight">
+          <strong>Disambut Tetua Kampung</strong><br/>
+          Di sana ia disambut baik oleh tetua kampung bernama Mbah Mayang Madu dan Mbah Banjar. Raden Qasim kemudian menetap di Jelak dan mendirikan sebuah surau yang akhirnya berkembang menjadi pesantren tempat mengaji ratusan penduduk.
+        </div>
+        <p class="story-text">Selang tiga tahun, ia pindah ke selatan sekitar satu kilometer ke tempat yang lebih tinggi dan terbebas dari banjir. Tempat itulah yang dinamai <strong>Desa Drajat</strong>, dan sejak itu ia mulai dipanggil <strong>Sunan Drajat</strong> oleh para pengikutnya.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 6 — KISAH BAGIAN 3 ══ -->
+  <div class="slide" id="s6">
+    <div class="story-card">
+      <div class="story-header">
+        <div class="story-num">Kisah · Bagian 3 dari 3</div>
+        <div class="story-title">Dakwah, Gelar &amp; Akhir Hayat</div>
+        <div class="story-subtitle">Wali sosial yang mengubah peradaban</div>
+      </div>
+      <div class="story-body">
+        <p class="story-text">Sunan Drajat dikenal sebagai wali penyebar Islam yang berjiwa sosial tinggi. Ia terlebih dahulu mengusahakan kesejahteraan sosial masyarakat, baru kemudian memberikan pemahaman tentang ajaran Islam. Ia mengajarkan cara bertanam, berdagang, membangun rumah, serta membuat alat untuk memikul barang dagangan.</p>
+        <div class="story-highlight">
+          <strong>Dakwah Lewat Seni &amp; Budaya</strong><br/>
+          Dalam menyampaikan ajarannya, Sunan Drajat memanfaatkan media kesenian seperti menggubah tembang macapat Pangkur. Selain itu, ia juga sesekali mementaskan pertunjukan wayang sebagai sarana berdakwah — pendekatan yang membuat Islam mudah diterima masyarakat Jawa.
+        </div>
+        <p class="story-text">Berkat hubungan baiknya dengan Raden Patah selaku Sultan Demak, Sunan Drajat dianugerahi gelar <strong>Sunan Mayang Madu</strong> karena dianggap mampu menanggulangi kemiskinan dan membimbing masyarakat. Ia memegang kendali keprajaan di wilayah perdikan Drajat selama <strong>36 tahun</strong>. Pada tahun 1522 M, Sunan Drajat tutup usia. Makamnya terletak di Desa Drajat, Paciran, Lamongan. Peninggalannya yang terkenal adalah gamelan bernama <em>Singo Mengkok</em> yang kini tersimpan di Museum Daerah setempat.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 7 — NAMA SUNAN DRAJAT ══ -->
+  <div class="slide" id="s7">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 07</p>
+        <h2 class="stitle">Mengapa Disebut Sunan Drajat?</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <p class="body-text">Nama "Sunan Drajat" tidak diberikan sejak lahir, melainkan tumbuh dari perjalanan dakwahnya yang panjang.</p>
+        <div class="points">
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#1D9E75" stroke-width="1.4"/><path d="M6.5 4v3l2 1" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Saat menuju Gresik, perahu Raden Qasim tenggelam. Ia diselamatkan ikan cucut dan ikan talang, terdampar di Kampung Jelak sekitar 1485 M.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#1D9E75" stroke-width="1.4"/><path d="M6.5 4v3l2 1" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Ia mendirikan surau di Jelak yang berkembang menjadi pesantren besar tempat ratusan santri mengaji.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#1D9E75" stroke-width="1.4"/><path d="M6.5 4v3l2 1" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Tiga tahun kemudian, ia pindah ke selatan dan menempati wilayah yang diberi nama <span class="hl">Desa Drajat</span>.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="4.5" stroke="#1D9E75" stroke-width="1.4"/><path d="M6.5 4v3l2 1" stroke="#1D9E75" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Karena menjadi imam dan pelindung di pedukuhan tersebut, para pengikutnya memanggilnya <span class="hl">Sunan Drajat</span>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 8 — GELAR ══ -->
+  <div class="slide" id="s8">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 08</p>
+        <h2 class="stitle">Gelar Sunan Mayang Madu &amp; Pangeran Kadrajat</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <p class="body-text">Selain Sunan Drajat, beliau menyandang banyak gelar kehormatan sebagai pengakuan atas jasa-jasanya kepada masyarakat dan Kerajaan Demak.</p>
+        <div class="gelar-grid">
+          <div class="gelar-card">
+            <div class="gelar-accent"></div>
+            <div class="gelar-content">
+              <div class="gelar-name">Sunan Mayang Madu</div>
+              <div class="gelar-desc">Gelar dari Raden Patah, Sultan Demak, karena Sunan Drajat berhasil menanggulangi kemiskinan dan membimbing masyarakat. Mencerminkan eratnya hubungan beliau dengan Kerajaan Demak hingga dipercaya memimpin wilayah perdikan Drajat secara otonom selama 36 tahun.</div>
+            </div>
+          </div>
+          <div class="gelar-card">
+            <div class="gelar-accent"></div>
+            <div class="gelar-content">
+              <div class="gelar-name">Pangeran Kadrajat</div>
+              <div class="gelar-desc">Berasal dari kata "Kadrajat" yang berarti <em>diangkat derajatnya</em>. Mencerminkan keberhasilan beliau mengubah Desa Drajat yang awalnya gersang dan miskin menjadi wilayah subur, makmur, dan pusat dakwah Islam yang berpengaruh di pesisir utara Jawa.</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--ink4);margin-top:1rem;">Kedua gelar ini bukan sekadar kehormatan, melainkan bukti nyata perubahan yang beliau bawa.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 9 — PERISTIWA PENTING ══ -->
+  <div class="slide" id="s9">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 09</p>
+        <h2 class="stitle">Peristiwa Penting dalam Hidupnya</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1470 M</div><div class="tl-text">Lahir di Ampeldenta, Surabaya dengan nama Raden Qasim sebagai putra Sunan Ampel.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">Masa Remaja</div><div class="tl-text">Belajar di Pesantren Ampel Denta, lalu merantau ke Cirebon berguru kepada Sunan Gunung Jati dan menikahi putrinya, Dewi Sufiyah.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1485 M</div><div class="tl-text">Perahu tenggelam saat menuju Gresik, diselamatkan ikan cucut dan ikan talang, terdampar di Kampung Jelak, Banjarwati.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">~1488 M</div><div class="tl-text">Pindah ke selatan, mendirikan pemukiman baru bernama Desa Drajat dan pesantren Dalem Duwur.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1520 M</div><div class="tl-text">Mendapat gelar Sunan Mayang Madu dari Raden Patah, Sultan Demak.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-year">1522 M</div><div class="tl-text">Wafat dan dimakamkan di Desa Drajat, Paciran, Lamongan, Jawa Timur.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 10 — PERAN DAKWAH ══ -->
+  <div class="slide" id="s10">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 10</p>
+        <h2 class="stitle">Peran dalam Penyebaran Islam di Indonesia</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <p class="body-text">Sunan Drajat memimpin wilayah perdikan Drajat selama 36 tahun dan menjadikannya pusat dakwah Islam yang berpengaruh di pesisir utara Jawa.</p>
+        <div class="two-col">
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Pesantren Dalem Duwur</span> — pusat pendidikan Islam yang mencetak banyak murid.</div></div>
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Dakwah budaya</span> — tembang Pangkur dan wayang agar Islam mudah diterima.</div></div>
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Pepali Pitu</span> — 7 dasar ajaran pedoman hidup masyarakat Jawa.</div></div>
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Catur Piwulang</span> — 4 ajaran sosial kepedulian kepada sesama.</div></div>
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Pemberdayaan ekonomi</span> — mengajarkan bertani, berdagang, membangun rumah.</div></div>
+          <div class="point"><div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div><div class="point-text"><span class="hl">Gamelan Singo Mengkok</span> — peninggalan seni tersimpan di Museum Daerah Lamongan.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 11 — PEPALI PITU BAGIAN 1 (poin 1-4) ══ -->
+  <div class="slide" id="s11">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 11 · Pepali Pitu — Bagian 1</p>
+        <h2 class="stitle">Sikap yang Diteladani dari Pepali Pitu</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <p class="body-text" style="margin-bottom:1.25rem;">Pepali Pitu adalah tujuh dasar ajaran Sunan Drajat yang menjadi pedoman hidup. Setiap ajaran mengandung sikap mulia yang bisa kita teladani hingga hari ini.</p>
+        <div class="teladan-grid">
+          <div class="teladan-card">
+            <div class="teladan-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="7" r="3" stroke="#1D9E75" stroke-width="1.5"/><path d="M3 16c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="teladan-title">1. Memangun resep tyasing sasama</div>
+            <div class="teladan-desc"><em>"Selalu membuat senang hati orang lain."</em><br/>Sikap: Bersikap ramah, empati, dan tidak menyakiti perasaan sesama dalam pergaulan sehari-hari.</div>
+          </div>
+          <div class="teladan-card">
+            <div class="teladan-icon"><svg viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7" stroke="#1D9E75" stroke-width="1.5"/><path d="M9 5v4l3 2" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="teladan-title">2. Jroning suka kudu eling lan waspada</div>
+            <div class="teladan-desc"><em>"Dalam kegembiraan, tetap ingat Allah dan waspada."</em><br/>Sikap: Tidak terlena oleh kesenangan dunia dan selalu menjaga kesadaran diri.</div>
+          </div>
+          <div class="teladan-card">
+            <div class="teladan-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M3 15L9 3l6 12" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10h7" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="teladan-title">3. Laksitaning subrata tan nyipta marang pringga bayaning lampah</div>
+            <div class="teladan-desc"><em>"Dalam meraih cita-cita, jangan hiraukan rintangan."</em><br/>Sikap: Pantang menyerah dan teguh menghadapi segala hambatan.</div>
+          </div>
+          <div class="teladan-card">
+            <div class="teladan-icon"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2v5M9 11v5M2 9h5M11 9h5" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="9" r="2" stroke="#1D9E75" stroke-width="1.5"/></svg></div>
+            <div class="teladan-title">4. Meper hardaning pancadriya</div>
+            <div class="teladan-desc"><em>"Senantiasa menekan hawa nafsu indrawi."</em><br/>Sikap: Mengendalikan diri dari dorongan nafsu dan godaan duniawi.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 12 — PEPALI PITU BAGIAN 2 (poin 5-7) ══ -->
+  <div class="slide" id="s12">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 12 · Pepali Pitu — Bagian 2</p>
+        <h2 class="stitle">Sikap yang Diteladani dari Pepali Pitu</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <p class="body-text" style="margin-bottom:1.25rem;">Tiga ajaran terakhir dari Pepali Pitu menyentuh dimensi spiritual, kedisiplinan ibadah, dan kepedulian sosial yang paling mendasar.</p>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <div class="teladan-card" style="flex-direction:row; align-items:flex-start; gap:14px;">
+            <div class="teladan-icon" style="flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2C6 2 3 5 3 9s3 7 6 7 6-3 6-7-3-7-6-7z" stroke="#1D9E75" stroke-width="1.5"/><path d="M9 6v3l2 2" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div>
+              <div class="teladan-title">5. Heneng – Hening – Henung</div>
+              <div class="teladan-desc"><em>"Dalam diam dicapai keheningan, dalam hening dicapai jalan kebebasan mulia."</em><br/>Sikap: Melatih ketenangan batin, introspeksi diri, dan tidak tergesa-gesa dalam mengambil keputusan.</div>
+            </div>
+          </div>
+          <div class="teladan-card" style="flex-direction:row; align-items:flex-start; gap:14px;">
+            <div class="teladan-icon" style="flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 18 18" fill="none"><path d="M9 2l1 3h3l-2.5 2 1 3L9 8.5 6.5 10l1-3L5 5h3z" stroke="#1D9E75" stroke-width="1.4" stroke-linejoin="round"/><path d="M4 14h10" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/><path d="M6 16h6" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div>
+              <div class="teladan-title">6. Mulya guna panca waktu</div>
+              <div class="teladan-desc"><em>"Kemuliaan lahir batin dicapai dengan menjalankan sholat lima waktu."</em><br/>Sikap: Disiplin dalam ibadah dan menjadikan sholat sebagai pondasi utama kehidupan.</div>
+            </div>
+          </div>
+          <div class="teladan-card" style="flex-direction:row; align-items:flex-start; gap:14px;">
+            <div class="teladan-icon" style="flex-shrink:0; margin-top:2px;"><svg viewBox="0 0 18 18" fill="none"><path d="M9 3C6 3 4 5 4 8c0 4 5 7 5 7s5-3 5-7c0-3-2-5-5-5z" stroke="#1D9E75" stroke-width="1.5"/><path d="M6 9l2 2 4-3" stroke="#1D9E75" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div>
+              <div class="teladan-title">7. Menehono teken / mangan / busana / pangiyup</div>
+              <div class="teladan-desc"><em>"Berikan tongkat kepada yang buta, makanan kepada yang lapar, pakaian kepada yang telanjang, dan payung kepada yang kehujanan."</em><br/>Sikap: Peduli dan nyata dalam membantu sesama yang membutuhkan.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 13 — KESIMPULAN ══ -->
+  <div class="slide" id="s13">
+    <div class="card">
+      <div class="card-stripe"></div>
+      <div class="card-body">
+        <p class="eyebrow">Slide 13</p>
+        <h2 class="stitle">Kesimpulan</h2>
+        <div class="rule"><div class="rule-line"></div><div class="rule-gem"></div></div>
+        <div class="story-highlight" style="margin-bottom:1.5rem;">
+          Sunan Drajat mengajarkan kita bahwa menyebarkan kebaikan tidak harus dengan kata-kata saja, tetapi lebih utama dengan perbuatan nyata. Beliau membuktikan bahwa seseorang yang peduli terhadap sesama, pantang menyerah menghadapi rintangan, dan bijak dalam caranya berdakwah, mampu mengubah sebuah desa yang gersang menjadi cahaya Islam yang bersinar hingga berabad-abad lamanya.
+        </div>
+        <div class="two-col">
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Lahir 1470 M di Ampeldenta, wafat 1522 M di Desa Drajat, Lamongan.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Berdakwah selama 36 tahun di wilayah perdikan Drajat, Lamongan.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Merumuskan Pepali Pitu dan Catur Piwulang sebagai pedoman hidup.</div>
+          </div>
+          <div class="point">
+            <div class="point-icon"><svg viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M6.5 2v9" stroke="#1D9E75" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+            <div class="point-text">Menggunakan seni, budaya, dan pemberdayaan ekonomi sebagai sarana dakwah.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 14 — TANYA JAWAB ══ -->
+  <div class="slide" id="s14">
+    <div class="cover-card" style="min-height:420px;">
+      <div class="cover-bg-glow"></div>
+      <div class="cover-arch-wrap">
+        <div class="cover-arch sm"></div>
+        <div class="cover-arch"></div>
+        <div class="cover-arch sm"></div>
+      </div>
+      <div style="position:relative; display:flex; flex-direction:column; align-items:center; text-align:center;">
+        <div style="width:72px; height:72px; border-radius:50%; background:rgba(29,158,117,0.15); border:1px solid rgba(29,158,117,0.3); display:flex; align-items:center; justify-content:center; margin-bottom:1.5rem;">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="#5DCAA5" stroke-width="1.5"/>
+            <path d="M12 13c0-2.2 1.8-4 4-4s4 1.8 4 4c0 1.8-1.2 3.3-2.8 3.8C16.5 17 16 17.5 16 18v1" stroke="#5DCAA5" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="16" cy="22" r="1" fill="#5DCAA5"/>
+          </svg>
+        </div>
+        <p class="eyebrow" style="color:rgba(255,255,255,0.4);">Sesi Interaktif</p>
+        <h1 class="cover" style="font-size:clamp(2rem,5vw,3rem); margin-bottom:0.5rem;">Tanya Jawab</h1>
+        <div class="cover-line"></div>
+        <p class="cover-sub">Apakah ada pertanyaan mengenai materi yang telah kami sampaikan? Kami siap menjawab dengan sebaik-baiknya.</p>
+        <div class="cover-pill">
+          <div class="cover-pill-dot"></div>
+          Silakan angkat tangan!
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SLIDE 15 — TERIMA KASIH ══ -->
+  <div class="slide" id="s15">
+    <div class="cover-card" style="min-height:420px;">
+      <div class="cover-bg-glow"></div>
+      <div class="cover-arch-wrap">
+        <div class="cover-arch sm"></div>
+        <div class="cover-arch"></div>
+        <div class="cover-arch sm"></div>
+      </div>
+      <div style="position:relative; display:flex; flex-direction:column; align-items:center; text-align:center;">
+        <div class="cover-star">✦ &nbsp; ✦ &nbsp; ✦</div>
+        <p class="eyebrow" style="color:rgba(255,255,255,0.4);">Penutup</p>
+        <h1 class="cover" style="font-size:clamp(2rem,5vw,3.5rem); margin-bottom:0.5rem;">Terima Kasih</h1>
+        <div class="cover-line"></div>
+        <p class="cover-sub" style="font-family:'Amiri',serif; font-size:1.1rem; color:rgba(255,255,255,0.5); font-style:italic; margin-bottom:0.5rem;">"Memangun resep tyasing sasama"</p>
+        <p class="cover-sub" style="font-size:0.85rem; margin-bottom:1.75rem;">Selalu membuat senang hati orang lain — Pepali Pitu, Sunan Drajat</p>
+        <div class="cover-pill">
+          <div class="cover-pill-dot"></div>
+          Wassalamualaikum Wr. Wb.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ NAV ══ -->
+  <div class="nav-area">
+    <div class="nav-row">
+      <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>← Sebelumnya</button>
+      <div class="nav-dots" id="dots"></div>
+      <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Selanjutnya →</button>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:6.67%"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let cur = 0;
+const total = 15;
+const members = ['Anggota 1','Anggota 2','Anggota 3','Anggota 4'];
+
+function initMembers() {
+  const g = document.getElementById('memberGrid');
+  g.innerHTML = '';
+  members.forEach((m,i) => {
+    const ini = m.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    g.innerHTML += `<div class="member-card" onclick="editMember(${i})">
+      <div class="member-avatar">${ini}</div>
+      <div class="member-name">${m}</div>
+      <div class="member-hint">klik untuk edit</div>
+    </div>`;
+  });
+}
+
+function editMember(i) {
+  const n = prompt('Masukkan nama anggota:', members[i]);
+  if (n && n.trim()) { members[i] = n.trim(); initMembers(); }
+}
+
+function initDots() {
+  const d = document.getElementById('dots');
+  d.innerHTML = '';
+  for (let i=0;i<total;i++) {
+    d.innerHTML += `<div class="ndot${i===0?' active':''}" onclick="goSlide(${i})" title="Slide ${i+1}"></div>`;
+  }
+}
+
+function goSlide(n) {
+  document.getElementById('s'+(cur+1)).classList.remove('active');
+  cur = n;
+  document.getElementById('s'+(cur+1)).classList.add('active');
+  document.querySelectorAll('.ndot').forEach((d,i)=>d.classList.toggle('active',i===cur));
+  document.getElementById('prevBtn').disabled = cur===0;
+  document.getElementById('nextBtn').disabled = cur===total-1;
+  document.getElementById('slideCounter').textContent = (cur+1)+' / '+total;
+  document.getElementById('progressFill').style.width = ((cur+1)/total*100)+'%';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function changeSlide(dir) { goSlide(Math.max(0,Math.min(total-1,cur+dir))); }
+
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key==='ArrowDown') changeSlide(1);
+  if (e.key==='ArrowLeft' ||e.key==='ArrowUp')   changeSlide(-1);
+});
+
+initMembers();
+initDots();
+</script>
+</body>
+</html>
